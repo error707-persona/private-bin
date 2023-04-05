@@ -1,0 +1,27 @@
+{
+  "name": "private-bin",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "postcss css/index.css -o build/styles.css",
+    
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/typography": "^0.5.9",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "sass": "^1.60.0",
+    "tailwindcss": "^3.3.1",
+    "typescript": "^4.9.3",
+    "vite": "^4.2.0"
+  },
+  "dependencies": {
+    "@sohailalam2/elemental-web": "^0.4.1",
+    "postcss-cli": "^10.1.0",
+    "watch": "^1.0.2"
+  }
+}

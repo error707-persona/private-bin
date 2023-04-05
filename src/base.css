@@ -1,0 +1,44 @@
+@import url("tailwindcss/base");
+@import url("tailwindcss/components");
+@import url("tailwindcss/utilities");
+@import url("tailwindcss/variants");
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,800;0,900;1,300;1,400;1,600;1,700;1,800&family=Press+Start+2P&family=VT323&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.dropdown{
+    @apply relative;
+}
+
+.dropdown-menu{
+    @apply absolute left-0 top-full bg-white p-3 rounded-sm shadow-lg min-w-max opacity-0;
+
+}
+.dropdown-menu2{
+    @apply absolute left-0 top-full bg-white p-3 rounded-sm shadow-lg min-w-max opacity-0;
+
+}
+
+.dropdown-menu3{
+    @apply absolute left-0 top-full bg-white p-3 rounded-sm shadow-lg min-w-max opacity-0;
+}
+
+.dropdown-menu li{
+    @apply hover:bg-teal-200 rounded-sm p-2 cursor-pointer;
+}
+.dropdown-menu1 li{
+    @apply hover:bg-teal-200 rounded-sm p-2 cursor-pointer;
+}
+
+.visible{
+    @apply opacity-100;
+}
+
+.invisible{
+    @apply opacity-0;
+}
