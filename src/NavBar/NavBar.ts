@@ -7,6 +7,9 @@ import {
 import template from "./template.html?raw";
 import styles from "./styles.scss?inline";
 import base from "../base.css?inline";
+import { DropDown } from "../DropDown";
+import { State } from "../DropDown/State";
+import { DropDownStateData } from "../DropDown/State";
 
 const caretSvg = `<svg
             class="hover:rotate-180 hover:ease-in transition duration-150 ease-out"
@@ -28,12 +31,32 @@ const caretSvg = `<svg
 
 @Component({ template, styles: [base, styles] })
 export class NavBar extends ElementalComponent {
-
   private isExpiryVisible = false;
-  private selectedExpiry = '';
+  private isAttachVisible = false;
+  private selectedExpiry = "";
+
+  
 
   protected render(): void {
     // do nothing as all we want is to render the template
+
+    document.getElementById("myList-1")?.appendChild(new DropDown({
+      state: State.from<DropDownStateData, State>({
+        option: "Expiry",
+        items: [
+          "5 minutes",
+          "10 minutes",
+          "30 minutes",
+          "1 hour",
+          "12 hour",
+          "1 day",
+          "3 days",
+          "1 week",
+          "2 weeks",
+          "1 month",
+        ],
+      }),
+    }))
   }
 
   @EventListener("click", { attachTo: ".expiry" })
@@ -41,71 +64,37 @@ export class NavBar extends ElementalComponent {
     this.isExpiryVisible = !this.isExpiryVisible;
     const classList = this.$(".dropdown-menu")?.classList;
 
-    if(!this.isExpiryVisible) {
+    if (!this.isExpiryVisible) {
       classList?.remove("visible");
-      this.selectedExpiry = (event.target as HTMLLIElement).innerText
-      const btn = this.$<HTMLButtonElement>('.btn-expiry');
+      this.selectedExpiry = (event.target as HTMLLIElement).innerText;
+      const btn = this.$<HTMLButtonElement>(".btn-expiry");
 
-      if(btn) {
-        btn.innerHTML = `Expiry: ${this.selectedExpiry} ${caretSvg}`
+      if (btn) {
+        btn.innerHTML = `Expires: ${this.selectedExpiry} ${caretSvg}`;
       }
     } else {
       classList?.add("visible");
     }
   }
-  //
-  // @EventListener("click", { attachTo: ".item" })
-  // handleCloseDropDown1(event: Event): void {
-  //   const classList = this.$(".dropdown-menu")?.classList;
-  //
-  //   if(this.isExpiryVisible) {
+
+  @EventListener("click", { attachTo: ".attach" })
+  handleAttachDropDown(event: Event): void {
+    this.isAttachVisible = !this.isAttachVisible;
+    const classList = this.$(".dropdown-menu")?.classList;
+
+    console.log(this.$('.dropdown-menu')?.innerHTML, "attach class")
+  //   if (!this.isAttachVisible) {
   //     classList?.remove("visible");
-  //
-  //     console.log(event.target.originalTarget);
-  //   } else {
-  //     classList?.add("visible");
-  //   }
-  // }
-  // @EventListener("click", { attachTo: ".item2" })
-  // handleCloseDropDown(event: Event): void {
-  //   this.$(".dropdown-menu")?.classList.remove("visible");
-  //   console.log(this.$(".dropdown-menu")?.classList)
-  //
-  // }
-  // @EventListener("click", { attachTo: ".item12" })
-  // handleCloseDropDown2(event: Event): void {
-  //   // this.$(".dropdown-menu1")?.classList.remove("visible");
-
-  //   console.log(this.$(".item12")?.classList, "hellow");
-  // }
-
-  // @EventListener("click", { attachTo: ".file" })
-  // handleFileDropDown(event: Event): void {
-  //   this.$(".dropdown-menu2")?.classList.add("visible");
-  //   console.log(this.$(".dropdown-menu2")?.classList)
-
-  // }
-  // @EventListener("click", { attachTo: ".item2" })
-  // handleCloseFileDropDown(event: Event): void {
-  //   this.$(".dropdown-menu2")?.classList.remove("visible");
+  //     this.selectedExpiry = (event.target as HTMLLIElement).innerText;
+  //     const btn = this.$<HTMLButtonElement>(".btn-expiry");
 
   // }
 
-  // @EventListener("click", { attachTo: ".expiry" })
-  // handleDropDown(event: Event): void {
-  //   this.$(".dropdown-menu1")?.classList.add("visible");
-
-  //   console.log(this.$(".dropdown-menu")?.classList);
-  // }
-  // @EventListener("click", { attachTo: ".item1" })
-  // handleCloseDropDown(event: Event): void {
-  //   this.$(".dropdown-menu1")?.classList.remove("visible");
-
-  //   console.log(this.$(".dropdown-menu")?.classList);
-  // }
-
+  
+}
 
 }
+
 
 // ----------------------
 // somewhere else in code
