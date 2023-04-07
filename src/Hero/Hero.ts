@@ -2,42 +2,27 @@ import {
   Component,
   ElementalComponent,
   ObservedState,
+  EventListener
 } from "@sohailalam2/elemental-web";
 
-@Component
-class Hero extends ElementalComponent {
+import template from "./template.html?raw";
+
+@Component({ template })
+export class Hero extends ElementalComponent {
   @ObservedState
-  private superpower = "unknown";
-
-  protected render() {
-    this.$root.innerHTML = `
-        <p>I am ${this.name} and I have ${this.superpower}</p>
-    `;
+  private text = "";
+    
+  protected render(): void {
+    const password = this.$('.input');
+    console.log(password)
   }
 
-  protected connectedCallback() {
-    super.connectedCallback();
-
-    // simulating an update after 2 seconds
-    setTimeout(() => {
-      // ✅ Correct way, will auto update the DOM
-      this.setAttribute("superpower", "XRay Vision");
-
-      // ❌ Wrong way... this will not update the DOM
-      this.superpower = "Super Hearing";
-    }, 2000);
+  @EventListener("change", { attachTo: ".input" })
+  handleInput(event: Event): void {
+    
+    this.text = (event.target as HTMLInputElement).value;
+    console.log(this.text)
+   
   }
 
-  // rest of the code ommitted for brevity...
 }
-
-// @Component
-// class Hero extends ElementalComponent {
-//   static get observedAttributes() {
-//     return ['superpower'];
-//   }
-
-//   private superpower = 'unknown';
-
-//   // rest of the code ommitted for brevity...
-// }

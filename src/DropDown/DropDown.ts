@@ -28,12 +28,16 @@ export class DropDown extends StatefulElementalComponent<State> {
       console.log(node)
       // document.getElementById("myList").appendChild(node);
       document.querySelector(".myList")?.appendChild(node);
+      
    });
     
   }
 
   private get nameElement(): HTMLParagraphElement {
     return this.$root.querySelector('span') as HTMLParagraphElement;
+  }
+  private get ListElement(): HTMLDListElement {
+    return this.$root.querySelector('ul') as HTMLDListElement;
   }
 
   

@@ -2,6 +2,7 @@ import {
   Component,
   ElementalComponent,
   EventListener,
+  ObservedState,
 } from "@sohailalam2/elemental-web";
 
 import template from "./template.html?raw";
@@ -34,29 +35,32 @@ export class NavBar extends ElementalComponent {
   private isExpiryVisible = false;
   private isAttachVisible = false;
   private selectedExpiry = "";
-
-  
+  @ObservedState
+  private password = "";
 
   protected render(): void {
+      const password = this.$('.input')
+      
     // do nothing as all we want is to render the template
-
-    document.getElementById("myList-1")?.appendChild(new DropDown({
-      state: State.from<DropDownStateData, State>({
-        option: "Expiry",
-        items: [
-          "5 minutes",
-          "10 minutes",
-          "30 minutes",
-          "1 hour",
-          "12 hour",
-          "1 day",
-          "3 days",
-          "1 week",
-          "2 weeks",
-          "1 month",
-        ],
-      }),
-    }))
+    //     document.getElementById('firstlink')?.appendChild(
+    //   new DropDown({
+    //     state: State.from<DropDownStateData, State>({
+    //       option: "Expiry",
+    //       items: [
+    //         "5 minutes",
+    //         "10 minutes",
+    //         "30 minutes",
+    //         "1 hour",
+    //         "12 hour",
+    //         "1 day",
+    //         "3 days",
+    //         "1 week",
+    //         "2 weeks",
+    //         "1 month",
+    //       ],
+    //     }),
+    //   })
+    // );
   }
 
   @EventListener("click", { attachTo: ".expiry" })
@@ -77,24 +81,22 @@ export class NavBar extends ElementalComponent {
     }
   }
 
+  @EventListener("change", { attachTo: ".input" })
+  handleInput(event: Event): void {
+    
+    this.text = (event.target as HTMLInputElement).value;
+    console.log(this.text)
+   
+  }
+
   @EventListener("click", { attachTo: ".attach" })
   handleAttachDropDown(event: Event): void {
     this.isAttachVisible = !this.isAttachVisible;
     const classList = this.$(".dropdown-menu")?.classList;
 
-    console.log(this.$('.dropdown-menu')?.innerHTML, "attach class")
-  //   if (!this.isAttachVisible) {
-  //     classList?.remove("visible");
-  //     this.selectedExpiry = (event.target as HTMLLIElement).innerText;
-  //     const btn = this.$<HTMLButtonElement>(".btn-expiry");
-
-  // }
-
-  
+    console.log(this.$(".dropdown-menu")?.innerHTML, "attach class");
+  }
 }
-
-}
-
 
 // ----------------------
 // somewhere else in code
