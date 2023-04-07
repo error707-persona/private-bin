@@ -1,130 +1,24 @@
 <nav>
   <ul class="flex gap-6 mt-3 justify-center items-center mb-4">
     <li class="link">
-      <img
-        src="https://avatars.githubusercontent.com/u/20367028?s=200&v=4"
-        width="30px"
-      />
+      <img src="https://avatars.githubusercontent.com/u/20367028?s=200&v=4" width="30px" alt="logo" />
     </li>
     <li class="link">
-      <button part="new" class="btn-action">
-        New
-      </button>
+      <button part="new" class="btn-action">New</button>
     </li>
-    <li class="link" id="firstlink">
-      <!-- <div class="dropdown expiry" data-dropdown>
-        <button class="flex gap-2 w-max btn-expiry" data-dropdown-button>
-          Expires: 1 week
-          <svg
-            class="hover:rotate-180 hover:ease-in transition duration-150 ease-out"
-            xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-chevron-down"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            stroke="currentColor"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path d="M6 9l6 6l6 -6"></path>
-          </svg>
-        </button>
-        <div class="dropdown-menu">
-          <ul>
-            <li class="item">5 minutes</li>
-            <li class="item2">10 minutes</li>
-            <li class="item">1 hour</li>
-            <li class="item">12 hour</li>
-            <li class="item">30 minutes</li>
-            <li class="item">1 day</li>
-            <li class="item">3 days</li>
-            <li class="item">1 week</li>
-            <li class="item">2 weeks</li>
-            <li class="item">1 month</li>
-          </ul>
-        </div>
-      </div> -->
-    </li>
+    <li class="link expiry"></li>
     <div>
-      <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-      <label for="vehicle1"> Burn after reading</label><br />
+      <input type="checkbox" id="burn" name="burn" value="burn" />
+      <label for="burn"> Burn after reading</label><br />
     </div>
     <div>
-      <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-      <label for="vehicle1"> Open discussion</label><br />
+      <input type="checkbox" id="discuss" name="discuss" value="discuss" />
+      <label for="discuss"> Open discussion</label><br />
     </div>
-
     <li class="link">
-      <input
-        class="p-3 outline-none border-2 rounded-lg w-56 input"
-        
-        placeholder="Password (recommended)"
-      />
+      <input class="input p-3 outline-none border-2 rounded-lg w-56" placeholder="Password (recommended)" />
     </li>
-    <li class="link expiry">
-      <div class="dropdown attach" data-dropdown>
-        <button class="flex gap-2 btn-attach" data-dropdown-button>
-          Attach a File
-          <svg
-            class="hover:rotate-180 hover:ease-in transition duration-150 ease-out"
-            xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-chevron-down"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            stroke="currentColor"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path d="M6 9l6 6l6 -6"></path>
-          </svg>
-        </button>
-        <div class="dropdown-menu">
-          <ul>
-            <li class="item"><input type="file" /></li>
-            <li class="item">Remove attachment</li>
-          </ul>
-        </div>
-      </div>
-    </li>
-    <li class="link">
-
-        <div class="link__icon">
-          <div class="dropdown expiry" data-dropdown>
-            <button class="flex gap-2" data-dropdown-button>
-              Format: Plain Text
-              <svg
-                class="hover:rotate-180 hover:ease-in transition duration-150 ease-out"
-                xmlns="http://www.w3.org/2000/svg"
-                class="icon icon-tabler icon-tabler-chevron-down"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-                stroke="currentColor"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M6 9l6 6l6 -6"></path>
-              </svg>
-            </button>
-            <div class="dropdown-menu">
-              <ul>
-                <li class="item">Plain text</li>
-                <li class="item">Source Code</li>
-                <li class="item">Mark Down</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-    </li>
+    <li class="link file"></li>
+    <li class="link format"></li>
   </ul>
 </nav>
